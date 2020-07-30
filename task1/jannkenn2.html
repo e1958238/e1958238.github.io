@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>じゃんけん</title>
+</head>
+<body>
+<header>
+<style>
+h1 {color: red; }
+h2 {color: greenyellow; }   
+</style>
+<h1>MY WEB SITE</h1>
+<nav>
+<ul>
+<li><a href="top.html">TOPページ</a></li>
+<li><a href="0603.html">自己紹介</a></li>
+<li><a href="hobby.html">私の趣味について</a></li>
+<li><a href="jannkenn2.html">じゃんけんページ</a></li>
+</ul>
+</nav>
+</header>    
+    
+    <div id="message1" >
+        <h3>CPUの手:</h3>
+    </div>
+    
+    <div id="message2" >
+        <h3>結果:決定ボタンを押して！</h3>
+    </div>
+    
+    <form>
+        <select id="janken">
+            <option>ぐー</option>
+            <option>ちょき</option>
+            <option>ぱー</option>
+        </select>
+        <input type="button" value="決定" onclick="myGame()">
+    </form>
+    
+    
+    <script>
+    function myGame() {
+
+        var myhand = document.getElementById("janken").selectedIndex;
+        var cpunum = Math.floor(Math.random()*3);
+        var cpuhand;
+        var judge;
+
+        if(cpunum == 0) {
+            cpuhand = "ぐー";
+        } else if(cpunum == 1) {
+            cpuhand = "ちょき";
+        } else if(cpunum == 2) {
+            cpuhand = "ぱー";
+        }
+
+        if(myhand == 0 && cpunum == 1) {
+            judge = "あなたの勝ち";
+        } else if(myhand == 1 && cpunum == 2) {
+            judge = "あなたの勝ち";
+        } else if(myhand == 2 && cpunum == 0) {
+            judge = "あなたの勝ち";
+        } else if(myhand == cpunum) {
+            judge = "ひきわけ";
+        } else {
+            judge = "あなたの負け";
+        }
+
+        document.getElementById("message1").innerHTML = "<h3>CPUの手: " + cpuhand + "</h3>";
+        document.getElementById("message2").innerHTML = "<h3>結果: " + judge + "</h3>";
+    }
+    </script>
+</body>
+</html>
